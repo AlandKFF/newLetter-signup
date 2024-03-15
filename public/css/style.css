@@ -43,13 +43,18 @@ label {
 }
 
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="date"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 16px;
+}
+
+input[type="date"] {
+    background-color: #f9f9f9; /* Match the background color of other input fields */
 }
 
 input[type="submit"] {

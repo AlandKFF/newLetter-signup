@@ -19,25 +19,26 @@ app.post('/',(req, res) => {
     const Fname = req.body.Fname;
     const Lname = req.body.Lname;
     const email = req.body.email;
-
+    const Bday = req.body.BIRTHDAY
+    const msg = req.body.msg;
     const data = {
         members: [
             {
                 email_address: email,
-                status: "subscribed",
+                status : "subscribed",
+                
                 merge_fields: {
+                    MESSAGE : msg,
+                    BIRTHDAY: Bday,
                     FNAME: Fname,
-                    LNAME: Lname
+                    LNAME: Lname    
                 }
             }
         ]
     };
         // console.log(data);
         const jsonData = JSON.stringify(data);
-        // const jsonData = JSON.parse(JSON.stringify(data));
-        // console.log(jsonData.members[0].email_address);
-        // console.log(jsonData.members[0].merge_fields.FNAME);  
-        
+        console.log(jsonData);      
         const url = "https://us22.api.mailchimp.com/3.0/lists/6814202fab";
 
         const options = {
@@ -63,22 +64,12 @@ app.post('/',(req, res) => {
         });
         
         request.write(jsonData);
-        request.end();
-
-
-        
-        
-
+        request.end();      
 });
 
 app.listen(process.env.PORT || 3000, ()=> {
-    console.log("server listening on port 3000");
+    console.log("server listening on port 3000" + process.env.PORT);
 })
 
 
 
-// ID list
-// 6814202fab
-
-// new API 
-// 7801facf073a7efaca87df1fac6c9da3-us22
